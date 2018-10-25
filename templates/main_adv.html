@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+      <link rel="stylesheet" href="static/js/SlickGrid/slick.grid.css" type="text/css"/>
+      <link rel="stylesheet" href="static/js/SlickGrid/css/smoothness/jquery-ui-1.11.3.custom.css" type="text/css"/>
+
+      <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+      <link rel="stylesheet" href="static/css/style_adv.css" type="text/css"/>
+      
+      <!--<link rel="stylesheet" href="static/js/SlickGrid/examples.css" type="text/css"/>-->
+  </head>
+
+ <body>
+
+  <ul class="tabs">
+    <li class="tab-link current" data-tab="tab">Аналитики</li>
+    <li class="tab-link" data-tab="tab">Разработчики</li>
+  </ul>
+
+  <header>
+    <div class="rectangle">
+       <div class="txt">График дежурств</div>
+    </div>
+  </header>
+    
+  <div class="container">
+    <div class="panel">
+      <label class="wrapper">
+        <input type="radio"  class="checker" value="previous" name="month" id="a">
+        <!--<span class="checkmark"></span>-->
+        <span class="contents">Предыдущий</span>
+        </label>
+      <label class="wrapper">
+        <input type="radio" class="checker"  checked="checked" value="current" name="month" id="b">
+        <!--<span class="checkmark"></span>-->
+       <span class="contents">Текущий</span>
+      </label>
+      <label class="wrapper">
+        <input type="radio" class="checker" value="next" name="month" id="c">
+        <!--<span class="checkmark"></span>-->
+        <span class="contents">Следующий</span>
+      </label>
+    </div> 
+      
+    <div id="tab" class="tab-content current">
+        <div id="myGrid"></div>
+    </div>
+
+  </div>
+
+  <div id="dataServer" data-columns='{{columns|safe}}' data-source='{{data|safe}}'></div>
+  
+  <script src="{{ url_for('static', filename='js/SlickGrid/lib/jquery-1.11.2.min.js')}}" ></script>
+  <script src="{{ url_for('static', filename='js/SlickGrid/lib/jquery.event.drag-2.2.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/SlickGrid/lib/jquery-ui-1.11.3.min.js')}}"></script>
+
+  <script src="{{ url_for('static', filename='js/SlickGrid/slick.core.js')}}"></script>
+
+  <script src="{{ url_for('static', filename='js/SlickGrid/plugins/slick.cellrangedecorator.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/SlickGrid/plugins/slick.cellrangeselector.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/SlickGrid/plugins/slick.cellselectionmodel.js')}}"></script>
+
+  <script src="{{ url_for('static', filename='js/SlickGrid/slick.grid.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/SlickGrid/slick.formatters.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/SlickGrid/slick.dataview.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/SlickGrid/slick.editors.js')}}"></script>
+ 
+  
+  
+  <script type='text/javascript' src="{{ url_for('static', filename='js/slick_grid_adv.js') }}" ></script>
+  <!--<script type='text/javascript' src="{{ url_for('static', filename='js/custom_adv.js') }}" ></script>-->
+ 
+ 
+  </body>
+</html> 

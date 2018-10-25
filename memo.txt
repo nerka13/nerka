@@ -1,0 +1,3 @@
+Запуск flask app
+d:/project/scripts/ptyhon d:/project/app.py
+

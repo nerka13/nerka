@@ -1,0 +1,256 @@
+/*@import url('../js/SlickGrid/slick-default-theme.css');*/
+
+:root {
+  --rectangle-width:none;
+  --container-width:none;
+  --grid-width:none;
+  --grid-margin:none;
+  --grey-color: none;
+  --select-width:none;
+  
+}
+/*-->MAIN----------------------------------------------------------------------------------------------------------------------------------------------*/
+body {
+    text-align: center;
+    background:	#eceae8;
+}
+/*above container*/
+.rectangle {
+	background: #d2ccc7 ; 
+  height: 30px;
+  width: var(--rectangle-width);
+  position: relative;
+  margin-left:3px;
+  top: 40px;
+  float: left;
+  -moz-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.55);
+  -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.55);
+  border-radius: 3px;
+  z-index: 100; /* показываем над всеми элементами */
+}
+.rectangle .txt {
+	top: 10px;
+  font-size: 20px;
+  color: #555;
+  text-shadow: 0px 1px 2px #bbb;
+  padding-top: 0px;
+  text-shadow: 1px 1px 2px rgba(132, 132, 132, 0.2);
+  text-align: center;
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+ul.tabs{
+  padding: 0px;
+  list-style: none;
+  margin-left: 10px;
+  margin-top: 0px;
+  position: absolute;
+}
+ul.tabs li{
+  display: inline;
+  padding: 0px;
+  cursor: pointer;
+  float:left;
+  color:#a8a39f;
+  text-shadow:0px 0px 1px #a8a39f;
+  background-image: linear-gradient(to top, #dbd8d6, #fff);
+  box-shadow: 0px 2px 4px 0px #cccccc, inset 0px 2px 1px 1px white, inset 0px -2px 1px 1px #cccccc;
+  height: 25px;
+  width:150px;
+  text-align: center;
+  border-radius: 10px 30px 0 0;
+}
+
+ul.tabs li.current{
+  background: #ededed;
+  color:#add8c2;
+  text-shadow:0px 0px 1px #add8c2;
+  background:white;
+  box-shadow: inset 0 -10px 10px  -10px #cccccc;
+}
+
+.tab-content{
+  display: none;
+  background: white;
+  background:white;
+}
+
+.tab-content.current{
+  display: block;
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.container {
+	width:var(--container-width);
+	margin-top: 25px;
+	margin-left: 10px;
+  padding-top:50px;
+  padding-bottom:5px;
+  background:white;
+  height:880px;
+  -moz-border-radius: 0 10px 10px 10px;
+  -webkit-border-radius: 0 10px 10px 10px;
+  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  z-index: 90; /* будет отображаться под лентой заголовка (класс .rectangle, у него z-index: 100) */
+}
+/*-->BUTTONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.panel{
+	position:relative;
+	top:0px;
+	height:65px;
+	background: linear-gradient(to top, #edeae8 0%, #ffffff 100%);
+}
+.wrapper {
+  display: inline;
+  position: relative;
+  padding-left: 150px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 15px;
+}
+/* Hide the browser's default radio button */
+.wrapper input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+/*
+/* Create a custom radio button */
+.contents {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 40px;
+  width: 120px;
+  background-image: linear-gradient(to top, #dbd8d6, #fff);
+  box-shadow: 0px 8px 10px 0px #cccccc, inset 0px 4px 1px 1px white, inset 0px -2px 1px 1px #cccccc;
+  border-radius: 40%;
+  color:#a8a39f;
+  text-shadow:0px 0px 1px #a8a39f;
+}
+
+.wrapper .contents  {
+  position:absolute;
+  top: 0;
+  left: 0;
+  height: 40px;
+  width: 120px;
+  line-height:40px;
+  border-radius: 45%;
+}
+/* When the radio button is checked */
+.wrapper input:checked ~ .contents  {
+  color:#add8c2;
+	text-shadow:0px 0px 1px #add8c2;
+	background:white;
+ 	box-shadow: inset 0 -15px 15px  -15px #cccccc;
+ 	border-radius: 45%;
+}
+
+/* On mouse-over */
+
+.wrapper:hover input ~  .contents{
+  background:white;
+  color:#e5cdca;
+  text-shadow:0px 0px 1px #e5cdca;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.wrapper:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/*--|BUTTONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#myGrid{
+	margin-left: var(--grid-margin);
+	margin-right: var(--grid-margin);
+	width:var(--grid-width);
+	height:800px;
+}
+#myGrid .slick-viewport {
+  overflow-y: hidden !important; 
+  overflow-x: hidden !important; 
+}
+
+.slick-header-columns {
+  background: url('../js/SlickGrid/images/header-columns-bg.gif') repeat-x center bottom;
+  border-bottom: 1px solid silver;
+
+}
+.header-center {
+    text-align: center;
+    font-size:medium;
+}
+.slick-header-column:hover, .slick-header-column-active {
+  background: white url('../js/SlickGrid/images/header-columns-over-bg.gif') repeat-x center bottom;
+}
+ 
+/*|MAIN-----------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.slick-cell {
+  padding-left: 4px;
+  padding-right: 4px;
+  font-size: 14px;
+  text-align: left;
+}
+.grey{background:var(--grey-color);}
+.holiday{background: linear-gradient(to right, #ffdac8 0%, #c0a395 100%);} /*Оранжевый:Сб-Вс-Праздник */
+.symbol_large{font-size:23px;font-weight:lighter;} /*Сверхурочные часы*/
+.symbol_medium{font-size:16px;font-weight:lighter;} /*Утро-Вечер*/
+.duty{background: linear-gradient(to top,  #00BFFF 50%, #4682B4 100%);} /*Синий: Дежурство*/
+.sickness{background: linear-gradient(to top, #ffff99 50%, #ffcc66 100%);
+	      color:#7a5100;
+ 	      fontWeight:bold;
+ 	      text-align: center;
+}  /*Желтый: Болезнь*/
+.vacation_planned{background: linear-gradient(to top, rgb(134,238,248)  50%,  #90d5d5  100%);}   /*Бирюзовый:Плановый отпуск*/         
+.vacation{
+	background: linear-gradient(to top,#00CED1  50%, #5F9EA0 100%);
+	font-size: 18px;
+	font-weight:normal;
+ } /*Изумрудный:Согласованный Отпуск */
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+.slick-row {
+  position: absolute;
+  background: white;
+  border: 0px;
+  line-height: 20px;
+  font-family: 'PT Mono', monospace;
+  font-weight:550;
+  color:black;
+}
+.slick-cell.selected {
+   background-color: #fbfbf0;
+}
+.slick-cell.active {
+  border-color:#abad8c;
+  border-style: solid;
+}
+/* Slick.Editors.Text, Slick.Editors.Date */
+input.editor-text {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  margin: 0;
+  background: transparent;
+  outline: 0;
+  padding: 0;
+}
+.hidden {
+    display: none !important;
+}
+.editor-select{
+	position:absolute;
+	top:-1px;
+	left:-1px;
+	background:#fbfbf0;
+	border-color:rgb(192, 192, 192);
+	width:var(--select-width); 
+	height:25px;
+	color: #3f3f3f;
+}
+option{
+  font-size:18px;
+}
