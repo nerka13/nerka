@@ -1,6 +1,5 @@
 
- //if (params['unaltered'].indexOf(columns[i]['field']) ==-1)
-//~~Setup GREY style~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Setup GREY style~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function getRGBA(start, end, red,green,blue, interval=0.1){
   text = "";
     if (start > end){
@@ -156,17 +155,7 @@ var options = {
   enableColumnReorder: false,
   editable:true,
   autoEdit: true,
-  /*dataItemColumnValueExtractor: function(item, columnDef) {
-    if(columnDef.editor == Slick.Editors.SelectOption){
-      console.log('!!',columnDef.options,item[columnDef.field])
-      //return eval(columnDef.options)[item[columnDef.field]];
-      return item[columnDef.field]
-    }else{
-      return item[columnDef.field];
-    }
-  }*/
 };
- 
 
 function getColumns(source){  
   //var columns_ini = JSON.parse(document.getElementById("dataServer").dataset.columns);
@@ -206,7 +195,6 @@ function getColumns(source){
    root.style.setProperty('--grid-width', gridWidth);
    root.style.setProperty('--grid-margin', gridMargin);
    root.style.setProperty('--select-width', selectWidth); 
-
    return columns;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~--|CONST
@@ -285,111 +273,10 @@ function getCellEvents(grid,columns,data){
     }
 
   });
-
-  // Make the grid respond to DataView change events.
-  /*
-  dataView.onRowCountChanged.subscribe(function (e, args) {
-    grid.updateRowCount();
-    grid.render();
-  });
-
-  dataView.onRowsChanged.subscribe(function (e, args) {
-    grid.invalidateRows(args.rows);
-    grid.render();
-  });
-  */
-
 } 
-
-function getChecker1(){
-  radioValueOld = $("input:checked");
-  $(".checker").click(function(){
-    //cnt+=1;
-    //radioValueOld.removeAttr('checked');
-    //console.log('WAS_'+cnt,radioValueOld.val());
-    curr = $(this).val();
-    var radioValue = $("input:checked").val();
-    //$("input:checked").attr( 'checked', 'checked');
-    //console.log('NOW_'+cnt,$("input:checked").val());
-    //a=$("input")
-    
-    inp = $("input");
-    for(var i=0; i<inp.length;i++){
-      //if (inp[i].val() <> curr){
-
-      //}
-      console.log('here',inp[i]);
-
-    }
-    //$("input:checked").each(function () {
-    //                var name = $(this).val()
-    //                //Checking whether radio button is selected and based on selection setting variable to true or false
-    //                console.log('!!!!',name);
-     //           });
-
-    
-    jQuery.ajax({
-                  type: 'POST',
-                  url: '/table',
-                  dataType: 'json',
-                  data:{month:radioValue},
-                  success: function (response) {
-                    $("#dataServer").removeAttr('data-columns');
-                    $("#dataServer").removeAttr('data-source');
-                    $("#dataServer").attr('data-columns',response.columns);
-                    $("#dataServer").attr('data-source',response.data);
-                    colSource = JSON.parse(document.getElementById("dataServer").dataset.columns);
-                    columns = getColumns(colSource);
-                    data = JSON.parse(document.getElementById("dataServer").dataset.source);
-                    grid = getGrid(data,columns);
-                    grid.render();
-                    getEvents(grid,columns,data);
-                  },
-                  error: function() {
-                    alert("An error occured!");
-                  }
-    });
-  });
-}
-
-
-
-function getChecker(){
-  radioValueOld = $("input:checked");
-
-  $(".checker").click(function(){
-    //cnt+=1;
-    //radioValueOld.removeAttr('checked');
-    //console.log('WAS_'+cnt,radioValueOld.val());
-    curr = $(this).val();
-    var radioValue = $("input:checked").val();
-    //$("input:checked").attr( 'checked', 'checked');
-    //console.log('NOW_'+cnt,$("input:checked").val());
-    //a=$("input")
-    
-    inp = $("input");
-    for(var i=0; i<inp.length;i++){
-      //if (inp[i].val() <> curr){
-
-      //}
-      console.log('here',inp[i]);
-
-    }
-    //$("input:checked").each(function () {
-    //                var name = $(this).val()
-    //                //Checking whether radio button is selected and based on selection setting variable to true or false
-    //                console.log('!!!!',name);
-     //           });
-
-    
-   
-  });
-}
 
 function getEvents(grid,columns,data){
   getCellEvents(grid,columns,data);
-  //getChecker();
-
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~--|FUNCTIONS
 $(function () {
@@ -403,23 +290,12 @@ $(function () {
   getEvents(grid,columns,data);
   radioValueOld = $("input:checked");
   //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|EVENTS
-  
-  //$(".checker").blur(function(){
-  //  radioValueOld = $(this);
-  //});
-
   $(".checker").click(function(){
     radioValueOld.removeAttr('checked');
-    console.log('OLD',radioValueOld.val());
     var radioValue = $("input:checked").val();
     $("input:checked").attr( 'checked', 'checked');
     radioValueOld = $("input:checked");
-    inp = $("input");
-    for(var i=0; i<inp.length;i++){
-        console.log('here',inp[i]);
-
-    }
-
+    //inp = $("input");
     jQuery.ajax({
                   type: 'POST',
                   url: '/table',
@@ -443,11 +319,7 @@ $(function () {
     });
   });
 
-
-
-
   $('ul.tabs li').click(function(){
-      console.log('VVVVVV');
       var tab_id = $(this).attr('data-tab');
       $('ul.tabs li').removeClass('current');
       $('.tab-content').removeClass('current');
@@ -456,18 +328,12 @@ $(function () {
       radioValueOld.removeAttr('checked');
       radioValue = $("input[value='current']");
       radioValue.attr('checked','checked');
-      console.log('XXX',radioValue.attr('id'));
-           
-      //radioValue.css();
       radioValueOld = radioValue;
-      //var n = tab_id.indexOf("-");
-      //idx = tab_id.substring(n+1,tab_id.length);
       colSource = JSON.parse(document.getElementById("dataServer").dataset.columns);
       columns = getColumns(colSource);
       data = JSON.parse(document.getElementById("dataServer").dataset.source);
       grid = getGrid(data,columns);
       getEvents(grid,columns,data);
-
   });
 
 })

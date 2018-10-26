@@ -6,16 +6,14 @@
       <link rel="stylesheet" href="static/js/SlickGrid/css/smoothness/jquery-ui-1.11.3.custom.css" type="text/css"/>
 
       <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
-      <link rel="stylesheet" href="static/css/style_adv.css" type="text/css"/>
-      
-      <!--<link rel="stylesheet" href="static/js/SlickGrid/examples.css" type="text/css"/>-->
+      <link rel="stylesheet" href="static/css/style.css" type="text/css"/>
   </head>
 
  <body>
 
   <ul class="tabs">
     <li class="tab-link current" data-tab="tab">Аналитики</li>
-    <li class="tab-link" data-tab="tab">Разработчики</li>
+    <!--<li class="tab-link" data-tab="tab">Разработчики</li>-->
   </ul>
 
   <header>
@@ -65,12 +63,8 @@
   <script src="{{ url_for('static', filename='js/SlickGrid/slick.formatters.js')}}"></script>
   <script src="{{ url_for('static', filename='js/SlickGrid/slick.dataview.js')}}"></script>
   <script src="{{ url_for('static', filename='js/SlickGrid/slick.editors.js')}}"></script>
- 
-  
-  
-  <script type='text/javascript' src="{{ url_for('static', filename='js/slick_grid_adv.js') }}" ></script>
-  <!--<script type='text/javascript' src="{{ url_for('static', filename='js/custom_adv.js') }}" ></script>-->
- 
- 
+
+  <script type='text/javascript' src="{{ url_for('static', filename='js/makeGrid.js') }}" ></script>
+
   </body>
 </html> 

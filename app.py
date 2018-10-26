@@ -13,7 +13,7 @@ def show_proba():
     columns, data = make_components(val_year = year, val_month= month)
     columns= json.dumps(columns)
     data = json.dumps(data)
-    return render_template('main_adv.html',columns=columns, data=data)
+    return render_template('main.html',columns=columns, data=data)
 
 @app.route('/table', methods=['POST'])
 def pass_table():
