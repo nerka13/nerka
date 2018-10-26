@@ -1,0 +1,12 @@
+1.cd c:/project
+2.git init
+3.git add .
+4.git commit -m 'First commit'
+5.git remote add origin https://github.com/nerka13/nerka.git       назвать удаленный сервер origin, путь <URL>
+6.если возникло: Everythin up-to-date, значит не хватает канала для переброски данных
+  202 Mib - это примерно байт 262144000
+  требуется настроить postBuffer
+  git config http.postBuffer 262144000
+7.git push
+
+  

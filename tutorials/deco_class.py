@@ -1,4 +1,4 @@
-import sys
+﻿import sys
 import time
 import heapq
 from matplotlib import pyplot as plt
@@ -45,7 +45,6 @@ def main_packsack():
     print('{:.3f}'.format(result))
 #---------------------------------------------------------------------------------------------
 from  collections import  Counter, namedtuple
-#красивый подход
 #Node = namedtuple('Node', ['left','right'])  -  простейший способо объявить класс
 class Node(namedtuple('Node', ['left','right'])):
     def walk(self, code, acc):
@@ -238,7 +237,7 @@ get,sett= cell()
 sett(700)
 #print(get())
 #---------------------------------------------------------------------------------------------
-#фишка map, lambda. Здесь интересно, что итерация сразу по [2,3] range[1,8] одновременно. Берется минимальный список
+map, lambda. Здесь интересно, что итерация сразу по [2,3] range[1,8] одновременно. Берется минимальный список
 #т.е 2**1 = 2
 #3**2 = 9
 mapper = map(lambda x,n: x ** n, [2,3],range(1,8))
